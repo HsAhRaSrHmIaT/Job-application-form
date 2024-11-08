@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import ApplicationForm
 from .models import Form
 from django.contrib import messages
@@ -34,6 +34,7 @@ def index(request):
             email.send()
 
             messages.success(request, 'Your application has been submitted successfully.')
+            return redirect('index')
 
     return render(request, 'index.html')
 
